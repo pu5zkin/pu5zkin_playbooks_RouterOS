@@ -1,0 +1,20 @@
+- hosts: my-router
+  gather_facts: no
+  tasks:
+    - name: Get Hostname
+      routeros_command:
+        commands: 
+          - /system identity print
+    - name: Get NTP servers
+      routeros_command:
+        commands:
+            - /system ntp client print
+    - name: Get version
+      routeros_command:
+        commands:
+            - /system routerboard print
+    - name: Get vlans
+      routeros_command:
+        commands:
+            - /interface vlan print
+    

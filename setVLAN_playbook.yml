@@ -1,0 +1,11 @@
+- hosts: my-router
+  gather_facts: no
+  tasks:
+    - name: Set new VLAN
+      routeros_command:
+        commands: 
+          - /interface vlan add name=VLAN20 vlan-id=20 interface=ether2 disabled=no comment=LAN
+    - name: Set new IP
+      routeros_command:
+        commands:
+          - /ip address add address=192.168.20.1/24 interface=VLAN20
